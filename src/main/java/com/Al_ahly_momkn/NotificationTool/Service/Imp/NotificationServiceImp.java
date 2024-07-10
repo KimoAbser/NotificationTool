@@ -56,6 +56,7 @@ public class NotificationServiceImp implements NotificationService {
         notification.setCode("Text");
         notification.setEffectiveDate(notificationModel.getEffectiveDate());
         notification.setOpened(false);
+        notification.setAmount(notificationModel.getAmount());
         notification.setSender(system);
         notification.setUser(user);
         notificationRepo.save(notification);
@@ -95,6 +96,7 @@ public class NotificationServiceImp implements NotificationService {
             notification.setUser(user);
             notification.setTitle(simpleNotification.getTitle());
             notification.setBody(simpleNotification.getBody());
+            notification.setAmount(simpleNotification.getAmount());
             notification.setCode("Text");
             notifications.add(notification);
 
@@ -118,7 +120,7 @@ public class NotificationServiceImp implements NotificationService {
         List<Notification> notifications=notificationRepo.findAllByMobileNumber(retrieveNotificationModel.getMobileNumber());
         List<NotificationDto> notificationDtos=new ArrayList<>();
         for (Notification notification:notifications){
-            notificationDtos.add(new NotificationDto(notification.getId(), notification.getTitle(),notification.getBody()
+            notificationDtos.add(new NotificationDto(notification.getId(), notification.getTitle(),notification.getBody(),notification.getAmount()
                     ,notification.getEffectiveDate(),notification.getSender().getName(),notification.getUser().getMobileNumber()));
         }
         return ResponseEntity.ok(notificationDtos);
@@ -142,6 +144,7 @@ public class NotificationServiceImp implements NotificationService {
             notification.setCode("Text");
             notification.setTitle(broadCast.getTitle());
             notification.setBody(broadCast.getBody());
+            notification.setAmount(broadCast.getAmount());
             notification.setEffectiveDate(broadCast.getEffectiveDate());
             notification.setSender(system);
             notification.setOpened(false);
@@ -155,7 +158,7 @@ public class NotificationServiceImp implements NotificationService {
         List<Notification> LastNotification=notificationRepo.findLastNotifications();
         List<NotificationDto> notificationDtos=new ArrayList<>();
         for (Notification notification:LastNotification){
-            notificationDtos.add(new NotificationDto(notification.getId(), notification.getTitle(),notification.getBody()
+            notificationDtos.add(new NotificationDto(notification.getId(), notification.getTitle(),notification.getBody(), notification.getAmount()
                     ,notification.getEffectiveDate(),notification.getSender().getName(),notification.getUser().getMobileNumber()));
         }
         return ResponseEntity.ok(notificationDtos);

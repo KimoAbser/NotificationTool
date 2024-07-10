@@ -24,6 +24,7 @@ public class Notification {
 
     private String body;
     private String title;
+    private Long amount;
 
     @ManyToOne
     @JoinColumn(name = "user_number")

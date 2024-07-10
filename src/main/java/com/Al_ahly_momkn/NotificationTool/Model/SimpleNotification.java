@@ -11,5 +11,6 @@ public class SimpleNotification {
     private String title;
     private String body;
     private String receiverMobile;
+    private Long amount;
 
 }

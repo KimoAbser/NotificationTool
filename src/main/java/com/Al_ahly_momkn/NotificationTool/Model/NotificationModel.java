@@ -17,5 +17,6 @@ public class NotificationModel {
     private String senderPassword;
     private String receiverMobile;
     private LocalDateTime effectiveDate;
+    private Long amount;
 
 }

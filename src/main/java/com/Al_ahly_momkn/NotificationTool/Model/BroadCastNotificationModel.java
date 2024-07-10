@@ -13,6 +13,7 @@ public class BroadCastNotificationModel {
     private String title;
     private String body;
     private String senderIp;
+    private Long amount;
     private String senderPassword;
     private String organization;
     private String subOrganization;

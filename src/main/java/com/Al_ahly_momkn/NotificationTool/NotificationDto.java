@@ -13,6 +13,7 @@ public class NotificationDto {
     private Long id;
     private String title;
     private String body;
+    private Long amount;
     private LocalDateTime effectiveDate;
     private String SenderName;
     private String userMobileNumber;
